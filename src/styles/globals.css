@@ -1,24 +1,247 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  /* --- Typography Scale (1.25 Ratio) --- */
+  --font-hero: 3.813rem; /* 61px */
+  --font-h1: 3.063rem;   /* 49px */
+  --font-h2: 2.438rem;   /* 39px */
+  --font-h3: 1.938rem;   /* 31px */
+  --font-h4: 1.563rem;   /* 25px */
+  --font-h5: 1.25rem;    /* 20px */
+  --font-base: 1rem;     /* 16px */
+  --font-sm: 0.813rem;   /* 13px */
+  --font-xs: 0.625rem;   /* 10px */
+
+  /* --- Color Palette --- */
+  
+  /* Midnight Navy */
+  --navy-50: rgb(221, 231, 233);
+  --navy-100: rgb(218, 219, 221);
+  --navy-200: rgb(179, 181, 183);
+  --navy-500: rgb(10, 13, 30);
+  --navy-600: rgb(19, 14, 27);
+  --navy-700: rgb(8, 12, 24);
+  --navy-800: rgb(11, 22, 33);
+  --navy-900: rgb(6, 9, 18);
+  --navy-950: rgb(5, 7, 13);
+  --navy-1000: rgb(4, 5, 11);
+
+  /* Electric Blue */
+  --blue-50: rgb(237, 243, 255);
+  --blue-100: rgb(228, 238, 254);
+  --blue-200: rgb(200, 219, 253);
+  --blue-500: rgb(75, 127, 253);
+  --blue-600: rgb(71, 114, 228);
+  --blue-700: rgb(63, 102, 203);
+  --blue-800: rgb(58, 95, 189);
+  --blue-900: rgb(47, 79, 158);
+  --blue-950: rgb(38, 63, 126);
+  --blue-1000: rgb(28, 44, 88);
+
+  /* Violet */
+  --violet-50: rgb(242, 239, 255);
+  --violet-100: rgb(235, 231, 255);
+  --violet-200: rgb(214, 204, 254);
+  --violet-500: rgb(124, 92, 252);
+  --violet-600: rgb(112, 83, 227);
+  --violet-700: rgb(99, 74, 202);
+  --violet-800: rgb(93, 69, 189);
+  --violet-900: rgb(74, 55, 151);
+  --violet-950: rgb(66, 49, 134);
+  --violet-1000: rgb(43, 32, 88);
+
+  /* Emerald */
+  --emerald-50: rgb(236, 250, 245);
+  --emerald-100: rgb(226, 247, 240);
+  --emerald-200: rgb(195, 239, 224);
+  --emerald-500: rgb(62, 200, 154);
+  --emerald-600: rgb(56, 180, 139);
+  --emerald-700: rgb(50, 160, 123);
+  --emerald-800: rgb(47, 150, 116);
+  --emerald-900: rgb(37, 120, 93);
+  --emerald-950: rgb(34, 100, 80);
+  --emerald-1000: rgb(22, 70, 54);
+
+  /* Coral Red */
+  --coral-50: rgb(255, 240, 240);
+  --coral-100: rgb(255, 233, 233);
+  --coral-200: rgb(255, 209, 209);
+  --coral-500: rgb(255, 107, 107);
+  --coral-600: rgb(230, 96, 96);
+  --coral-700: rgb(204, 86, 86);
+  --coral-800: rgb(191, 80, 80);
+  --coral-900: rgb(153, 64, 64);
+  --coral-950: rgb(133, 56, 56);
+  --coral-1000: rgb(89, 37, 37);
+
+  /* Ghost White */
+  --ghost-50: rgb(254, 254, 255);
+  --ghost-100: rgb(253, 253, 255);
+  --ghost-200: rgb(250, 252, 255);
+  --ghost-500: rgb(240, 244, 255);
+  --ghost-600: rgb(218, 226, 235);
+  --ghost-700: rgb(192, 195, 204);
+  --ghost-800: rgb(180, 183, 191);
+  --ghost-900: rgb(144, 146, 153);
+  --ghost-950: rgb(108, 110, 115);
+  --ghost-1000: rgb(84, 85, 89);
+
+  /* Semantic Variables */
+  --background: var(--blue-900);
+  --foreground: var(--ghost-50);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
+  /* Typography Sizes */
+  --font-size-hero: var(--font-hero);
+  --font-size-h1: var(--font-h1);
+  --font-size-h2: var(--font-h2);
+  --font-size-h3: var(--font-h3);
+  --font-size-h4: var(--font-h4);
+  --font-size-h5: var(--font-h5);
+  --font-size-sm: var(--font-sm);
+  --font-size-xs: var(--font-xs);
+
+  /* Colors */
+  --color-navy-50: var(--navy-50);
+  --color-navy-100: var(--navy-100);
+  --color-navy-200: var(--navy-200);
+  --color-navy-500: var(--navy-500);
+  --color-navy-600: var(--navy-600);
+  --color-navy-700: var(--navy-700);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+  --color-navy-950: var(--navy-950);
+  --color-navy-1000: var(--navy-1000);
+
+  --color-blue-50: var(--blue-50);
+  --color-blue-100: var(--blue-100);
+  --color-blue-200: var(--blue-200);
+  --color-blue-500: var(--blue-500);
+  --color-blue-600: var(--blue-600);
+  --color-blue-700: var(--blue-700);
+  --color-blue-800: var(--blue-800);
+  --color-blue-900: var(--blue-900);
+  --color-blue-950: var(--blue-950);
+  --color-blue-1000: var(--blue-1000);
+
+  --color-violet-50: var(--violet-50);
+  --color-violet-100: var(--violet-100);
+  --color-violet-200: var(--violet-200);
+  --color-violet-500: var(--violet-500);
+  --color-violet-600: var(--violet-600);
+  --color-violet-700: var(--violet-700);
+  --color-violet-800: var(--violet-800);
+  --color-violet-900: var(--violet-900);
+  --color-violet-950: var(--violet-950);
+  --color-violet-1000: var(--violet-1000);
+
+  --color-emerald-50: var(--emerald-50);
+  --color-emerald-100: var(--emerald-100);
+  --color-emerald-200: var(--emerald-200);
+  --color-emerald-500: var(--emerald-500);
+  --color-emerald-600: var(--emerald-600);
+  --color-emerald-700: var(--emerald-700);
+  --color-emerald-800: var(--emerald-800);
+  --color-emerald-900: var(--emerald-900);
+  --color-emerald-950: var(--emerald-950);
+  --color-emerald-1000: var(--emerald-1000);
+
+  --color-coral-50: var(--coral-50);
+  --color-coral-100: var(--coral-100);
+  --color-coral-200: var(--coral-200);
+  --color-coral-500: var(--coral-500);
+  --color-coral-600: var(--coral-600);
+  --color-coral-700: var(--coral-700);
+  --color-coral-800: var(--coral-800);
+  --color-coral-900: var(--coral-900);
+  --color-coral-950: var(--coral-950);
+  --color-coral-1000: var(--coral-1000);
+
+  --color-ghost-50: var(--ghost-50);
+  --color-ghost-100: var(--ghost-100);
+  --color-ghost-200: var(--ghost-200);
+  --color-ghost-500: var(--ghost-500);
+  --color-ghost-600: var(--ghost-600);
+  --color-ghost-700: var(--ghost-700);
+  --color-ghost-800: var(--ghost-800);
+  --color-ghost-900: var(--ghost-900);
+  --color-ghost-950: var(--ghost-950);
+  --color-ghost-1000: var(--ghost-1000);
+
+  /* Semantic Colors */
+  --color-primary: var(--color-blue-500);
+  --color-secondary: var(--color-violet-500);
+  --color-accent: var(--color-emerald-500);
+  --color-danger: var(--color-coral-500);
+  
   --font-inter: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  background: #1C2C58;
+  min-height: 100vh;
 }
 
-body {
-  background: var(--foreground);
-  color: var(--background);
-  font-family: var(--font-inter);
+/* --- Utility Classes --- */
+
+/* Typography Utils */
+.text-hero { font-size: var(--font-hero); line-height: 1.1; font-weight: 800; }
+.text-h1 { font-size: var(--font-h1); line-height: 1.2; font-weight: 700; }
+.text-h2 { font-size: var(--font-h2); line-height: 1.2; font-weight: 700; }
+.text-h3 { font-size: var(--font-h3); line-height: 1.3; font-weight: 600; }
+.text-h4 { font-size: var(--font-h4); line-height: 1.4; font-weight: 600; }
+.text-h5 { font-size: var(--font-h5); line-height: 1.5; font-weight: 500; }
+.text-base { font-size: var(--font-base); line-height: 1.6; }
+.text-sm { font-size: var(--font-sm); line-height: 1.6; }
+.text-xs { font-size: var(--font-xs); line-height: 1.6; }
+
+/* Effects */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 42px;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, var(--ghost-50), var(--navy-200));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button System */
+.btn {
+  @apply inline-flex items-center justify-center transition-all duration-200 rounded-xl font-semibold px-6 py-2 active:scale-95;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-600) 100%);
+  @apply text-white hover:shadow-[0_0_20px_rgba(75,127,253,0.3)] hover:opacity-90;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  @apply hover:bg-white/10;
+}
+
+.btn-emerald {
+  background: linear-gradient(135deg, var(--emerald-500) 0%, var(--emerald-600) 100%);
+  @apply text-white hover:shadow-[0_0_20px_rgba(62,200,154,0.3)] hover:opacity-90;
+}
+
+.btn-coral {
+  background: linear-gradient(135deg, var(--coral-500) 0%, var(--coral-600) 100%);
+  @apply text-white hover:shadow-[0_0_20px_rgba(255,107,107,0.3)] hover:opacity-90;
 }

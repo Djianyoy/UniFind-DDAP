@@ -1,9 +1,10 @@
-import React from 'react'
+import BerandaContainer from '@/feature/beranda/container/BerandaContainer';
+import React from 'react';
 
-const page = () => {
+const LandingPage = () => {
   return (
-    <div className='bg-red-500 py-3 px-5 w-fit m-4'>page</div>
-  )
-}
+    <BerandaContainer />
+  );
+};
 
-export default page
+export default LandingPage;

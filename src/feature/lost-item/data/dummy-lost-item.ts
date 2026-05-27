@@ -8,7 +8,7 @@ export const DUMMY_LOST_ITEMS: LostItem[] = [
     location: "Gedung G Filkom",
     date: "20 Maret 2026",
     category: "Kunci",
-    image: "/images/items/key.png",
+    image: "/lost-item/images/kunci-motor-card-image.svg",
     status: "found",
   },
   {
@@ -18,7 +18,7 @@ export const DUMMY_LOST_ITEMS: LostItem[] = [
     location: "Junction",
     date: "4 Mei 2026",
     category: "Dokumen",
-    image: "/images/items/ktp.png",
+    image: "/lost-item/images/ktp-card-item.jpg",
     status: "lost",
   },
   {
@@ -28,7 +28,7 @@ export const DUMMY_LOST_ITEMS: LostItem[] = [
     location: "Gedung F Filkom",
     date: "28 Februari 2026",
     category: "Elektronik",
-    image: "/images/items/iphone.png",
+    image: "/lost-item/images/phone-card-image.png",
     status: "wanted",
   },
   {
@@ -38,7 +38,7 @@ export const DUMMY_LOST_ITEMS: LostItem[] = [
     location: "Gedung GKM",
     date: "20 Maret 2026",
     category: "Dompet",
-    image: "/images/items/wallet.png",
+    image: "/lost-item/images/dompet-card-image.jpg",
     status: "lost",
   },
 ];

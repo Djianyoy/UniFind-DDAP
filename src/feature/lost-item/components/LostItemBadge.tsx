@@ -26,7 +26,7 @@ export default function LostItemBadge({ status }: Props) {
   return (
     <div
       className={clsx(
-        "absolute right-4 top-4 rounded-full px-4 py-1 text-xs font-medium shadow-lg",
+        "absolute right-4 top-4 z-10 rounded-full px-4 py-1 text-xs font-medium shadow-lg backdrop-blur-md",
         badgeMap[status].className
       )}
     >

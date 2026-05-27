@@ -3,6 +3,9 @@ export const LOST_ITEM_CATEGORIES = [
   "Elektronik",
   "Dompet",
   "Kunci",
-  "Dompet & Tas",
+  "Tas",
   "Lainnya",
 ];
+export const DEFAULT_DATE = "Semua tanggal";
+
+export const DEFAULT_LOCATION = "Semua tempat";

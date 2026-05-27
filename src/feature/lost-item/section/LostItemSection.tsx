@@ -6,6 +6,8 @@ import LostItemGrid from "@/feature/lost-item/components/LostItemGrid";
 import LostItemSearch from "@/feature/lost-item/components/LostItemSearch";
 import ReportItemButton from "@/feature/lost-item/components/ReportItemButton";
 import { useLostItemOptions } from "@/feature/lost-item/hooks/useLostItemOption";
+import { useState } from "react";
+import ReportItemModal from "@/feature/lost-item/components/modal/ReportItemModal";
 
 export default function LostItemSection() {
   const {
@@ -21,6 +23,7 @@ export default function LostItemSection() {
   } = useLostItemFilter();
 
   const { optionsDate, optionsLocation } = useLostItemOptions();
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <section className=" relative overflow-hidden  bg-[#1C2C58] px-5 py-10 sm:px-8 lg:px-14 xl:px-20 min-h-screen">
@@ -49,7 +52,7 @@ export default function LostItemSection() {
               tanggal, dan lokasi
             </p>
           </div>
-          <ReportItemButton />
+          <ReportItemButton onClick={() => setOpenModal(true)}/>
         </div>
         <div className="mt-8 flex flex-col gap-4 xl:flex-row">
           <div className="flex-1">
@@ -87,6 +90,8 @@ export default function LostItemSection() {
           <LostItemGrid items={filteredItems} />
         </div>
       </div>
+    
+    <ReportItemModal open={openModal} onClose={() => setOpenModal(false)} />
     </section>
   );
 }

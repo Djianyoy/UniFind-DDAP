@@ -18,31 +18,27 @@ interface Props {
 export default function ReportItemForm({ onSubmit }: Props) {
   const { form, setField, resetForm } = useReportItemForm();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault();
 
-    const newItem: LostItem = {
-      id: crypto.randomUUID(),
+  const newItem: LostItem = {
+    id: crypto.randomUUID(),
+    title: form.itemName,
+    description: form.description,
+    category: form.category,
+    date: form.foundDate,
+    location: form.foundLocation,
+    image:
+      form.image
+        ? URL.createObjectURL(form.image)
+        : "/lost-item/default.png",
+    status: "found",
+  };
 
-      title: form.itemName,
+  onSubmit?.(newItem);
 
-      description: form.description,
-
-      category: form.category,
-
-      location: form.foundLocation,
-
-      date: form.foundDate,
-
-      image: form.image instanceof File ? URL.createObjectURL(form.image) : "",
-
-      status: "found",
-    };
-
-    onSubmit(newItem);
-
-    resetForm();
-  }
+  resetForm();
+}
 
   return (
     <form className="space-y-5" onSubmit={handleSubmit}>

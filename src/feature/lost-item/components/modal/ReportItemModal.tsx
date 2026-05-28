@@ -9,11 +9,7 @@ interface Props {
   onSubmit?: (data: LostItem) => void;
 }
 
-export default function ReportItemModal({
-  open,
-  onClose,
-  onSubmit,
-}: Props) {
+export default function ReportItemModal({ open, onClose, onSubmit }: Props) {
   if (!open) return null;
 
   return (
@@ -33,9 +29,7 @@ export default function ReportItemModal({
         "
       >
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-white">
-            Lapor Barang Temuan
-          </h2>
+          <h2 className="text-2xl font-bold text-white">Lapor Barang Temuan</h2>
 
           <button
             onClick={onClose}
@@ -45,7 +39,12 @@ export default function ReportItemModal({
           </button>
         </div>
 
-        <ReportItemForm onSubmit={() => onSubmit} />
+        <ReportItemForm
+          onSubmit={(data) => {
+            onSubmit?.(data);
+            onClose();
+          }}
+        />
       </div>
     </div>
   );

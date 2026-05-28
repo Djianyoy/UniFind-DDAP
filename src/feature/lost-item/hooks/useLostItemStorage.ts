@@ -35,8 +35,18 @@ export function useLostItemStorage() {
   }, [items]);
 
   function addItem(item: LostItem) {
-    setItems((prev) => [item, ...prev]);
-  }
+  const updatedItems = [item, ...items];
+
+  setItems(updatedItems);
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(updatedItems)
+  );
+}
+
+console.log("FORM SUBMIT");
+console.log(items);
 
   return {
     items,

@@ -12,12 +12,7 @@ export default function UploadBox({ onChange }: Props) {
       </label>
 
       <label
-        className="
-          flex cursor-pointer flex-col items-center justify-center
-          rounded-xl border border-dashed border-white/20
-          bg-white/10 px-5 py-10 text-center
-          transition-all hover:bg-white/15
-        "
+        className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-white/20 bg-white/10 px-5 py-10 text-center transition-all hover:bg-white/15"
       >
         <input
           type="file"

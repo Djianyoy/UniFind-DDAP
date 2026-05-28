@@ -1,4 +1,4 @@
-import { LostItem } from "../types/lost-item.type";
+import { LostItem } from "@/feature/lost-item/types/lost-item.type";
 
 export function useLostItemOptions(items: LostItem[]) {
   const itemsDate = items.map((item) => item.date);

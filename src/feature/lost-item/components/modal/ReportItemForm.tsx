@@ -10,6 +10,7 @@ import { REPORT_ITEM_CATEGORIES } from "@/feature/lost-item/constants/report-ite
 import { useReportItemForm } from "@/feature/lost-item/hooks/useReportItemForm";
 
 import { LostItem } from "@/feature/lost-item/types/lost-item.type";
+import { uploadImage, uploadImageToCloudinary } from "@/feature/lost-item/services/cloudinary.service";
 
 interface Props {
   onSubmit: (data: LostItem) => void;
@@ -18,8 +19,18 @@ interface Props {
 export default function ReportItemForm({ onSubmit }: Props) {
   const { form, setField, resetForm } = useReportItemForm();
 
-function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+async function handleSubmit(
+  e: React.FormEvent<HTMLFormElement>
+) {
   e.preventDefault();
+
+  let imageUrl = "/lost-item/default.png";
+
+  if (form.image) {
+    imageUrl = await uploadImageToCloudinary(
+      form.image
+    );
+  }
 
   const newItem: LostItem = {
     id: crypto.randomUUID(),
@@ -28,14 +39,11 @@ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     category: form.category,
     date: form.foundDate,
     location: form.foundLocation,
-    image:
-      form.image
-        ? URL.createObjectURL(form.image)
-        : "/lost-item/default.png",
+    image: imageUrl,
     status: "found",
   };
 
-  onSubmit?.(newItem);
+  onSubmit(newItem);
 
   resetForm();
 }
@@ -64,10 +72,7 @@ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       />
 
       <div
-        className="
-          grid grid-cols-1 gap-4
-          md:grid-cols-2
-        "
+        className="grid grid-cols-1 gap-4 md:grid-cols-2"
       >
         <FormInput
           label="Tanggal Ditemukan *"
@@ -85,10 +90,7 @@ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       </div>
 
       <div
-        className="
-          grid grid-cols-1 gap-4
-          md:grid-cols-2
-        "
+        className="grid grid-cols-1 gap-4 md:grid-cols-2"
       >
         <FormInput
           label="Nama Penemu"
@@ -116,14 +118,7 @@ function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 
       <button
         type="submit"
-        className="
-          h-12 w-full rounded-full
-          bg-gradient-to-r
-          from-blue-500 to-violet-500
-          text-sm font-semibold text-white
-          transition-all duration-300
-          hover:scale-[1.01]
-        "
+        className="h-12 w-full rounded-full bg-gradient-to-r from-blue-500 to-violet-500 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.01]"
       >
         Kirim laporan
       </button>

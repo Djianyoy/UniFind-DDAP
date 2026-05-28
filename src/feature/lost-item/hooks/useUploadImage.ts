@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { uploadImageToCloudinary } from "../services/cloudinary.service";
+import { uploadImageToCloudinary } from "@/feature/lost-item/services/cloudinary.service";
 
 export function useUploadImage() {
   const [loading, setLoading] = useState(false);

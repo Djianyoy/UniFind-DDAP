@@ -1,21 +1,21 @@
-import { DUMMY_LOST_ITEMS } from "@/feature/lost-item/data/dummy-lost-item";
+import { LostItem } from "../types/lost-item.type";
 
-export function useLostItemOptions() {
-  const itemsDate = DUMMY_LOST_ITEMS.map((item) => item.date);
+export function useLostItemOptions(items: LostItem[]) {
+  const itemsDate = items.map((item) => item.date);
 
-  const itemsLocation = DUMMY_LOST_ITEMS.map(
+  const itemsLocation = items.map(
     (item) => item.location
   );
 
-  const optionsDate =
-    itemsDate.length > 0
-      ? ["Semua tanggal", ...Array.from(new Set(itemsDate))]
-      : ["Semua tanggal"];
+  const optionsDate = [
+    "Semua tanggal",
+    ...Array.from(new Set(itemsDate)),
+  ];
 
-  const optionsLocation =
-    itemsLocation.length > 0
-      ? ["Semua tempat", ...Array.from(new Set(itemsLocation))]
-      : ["Semua tempat"];
+  const optionsLocation = [
+    "Semua tempat",
+    ...Array.from(new Set(itemsLocation)),
+  ];
 
   return {
     optionsDate,

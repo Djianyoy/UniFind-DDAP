@@ -1,15 +1,18 @@
 "use client";
 
 import ReportItemForm from "@/feature/lost-item/components/modal/ReportItemForm";
+import { LostItem } from "../../types/lost-item.type";
 
 interface Props {
   open: boolean;
   onClose: () => void;
+  onSubmit?: (data: LostItem) => void;
 }
 
 export default function ReportItemModal({
   open,
   onClose,
+  onSubmit,
 }: Props) {
   if (!open) return null;
 
@@ -42,7 +45,7 @@ export default function ReportItemModal({
           </button>
         </div>
 
-        <ReportItemForm />
+        <ReportItemForm onSubmit={() => onSubmit} />
       </div>
     </div>
   );

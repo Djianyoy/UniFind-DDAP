@@ -7,13 +7,45 @@ import UploadBox from "@/feature/lost-item/components/modal/UploadBox";
 
 import { REPORT_ITEM_CATEGORIES } from "@/feature/lost-item/constants/report-item.constants";
 
-import { useReportItemForm } from "@/feature/lost-item/hooks/use-report-item-form";
+import { useReportItemForm } from "@/feature/lost-item/hooks/useReportItemForm";
 
-export default function ReportItemForm() {
-  const { form, setField } = useReportItemForm();
+import { LostItem } from "@/feature/lost-item/types/lost-item.type";
+
+interface Props {
+  onSubmit: (data: LostItem) => void;
+}
+
+export default function ReportItemForm({ onSubmit }: Props) {
+  const { form, setField, resetForm } = useReportItemForm();
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const newItem: LostItem = {
+      id: crypto.randomUUID(),
+
+      title: form.itemName,
+
+      description: form.description,
+
+      category: form.category,
+
+      location: form.foundLocation,
+
+      date: form.foundDate,
+
+      image: form.image instanceof File ? URL.createObjectURL(form.image) : "",
+
+      status: "found",
+    };
+
+    onSubmit(newItem);
+
+    resetForm();
+  }
 
   return (
-    <form className="space-y-5">
+    <form className="space-y-5" onSubmit={handleSubmit}>
       <FormInput
         label="Nama Barang *"
         placeholder="Contoh: Kunci Motor Honda Beat"
@@ -84,15 +116,14 @@ export default function ReportItemForm() {
         onChange={(value) => setField("pickupLocation", value)}
       />
 
-      <UploadBox
-        onChange={(file) => setField("image", file)}
-      />
+      <UploadBox onChange={(file) => setField("image", file)} />
 
       <button
         type="submit"
         className="
           h-12 w-full rounded-full
-          bg-gradient-to-r from-blue-500 to-violet-500
+          bg-gradient-to-r
+          from-blue-500 to-violet-500
           text-sm font-semibold text-white
           transition-all duration-300
           hover:scale-[1.01]

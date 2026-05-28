@@ -1,40 +1,30 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { LostItem } from "../types/lost-item.type";
 
-import { DUMMY_LOST_ITEMS } from "@/feature/lost-item/data/dummy-lost-item";
-
-import {
-  LOST_ITEM_CATEGORIES,
-  DEFAULT_DATE,
-  DEFAULT_LOCATION,
-} from "@/feature/lost-item/constants/lost-item.constants";
-
-export function useLostItemFilter() {
+export function useLostItemFilter(items: LostItem[]) {
   const [search, setSearch] = useState("");
-
-  const [category, setCategory] = useState(LOST_ITEM_CATEGORIES[0]);
-
-  const [date, setDate] = useState(DEFAULT_DATE);
-
-  const [location, setLocation] = useState(DEFAULT_LOCATION);
+  const [category, setCategory] = useState("Semua");
+  const [date, setDate] = useState("Semua tanggal");
+  const [location, setLocation] = useState("Semua tempat");
 
   const filteredItems = useMemo(() => {
-    return DUMMY_LOST_ITEMS.filter((item) => {
+    return items.filter((item) => {
       const matchSearch =
         item.title.toLowerCase().includes(search.toLowerCase()) ||
         item.location.toLowerCase().includes(search.toLowerCase());
 
       const matchCategory =
-        category === LOST_ITEM_CATEGORIES[0] ||
+        category === "Semua" ||
         item.category === category;
 
       const matchDate =
-        date === DEFAULT_DATE ||
+        date === "Semua tanggal" ||
         item.date === date;
 
       const matchLocation =
-        location === DEFAULT_LOCATION ||
+        location === "Semua tempat" ||
         item.location === location;
 
       return (
@@ -44,7 +34,7 @@ export function useLostItemFilter() {
         matchLocation
       );
     });
-  }, [search, category, date, location]);
+  }, [items, search, category, date, location]);
 
   return {
     search,

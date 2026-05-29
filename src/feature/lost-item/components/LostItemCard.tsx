@@ -1,13 +1,17 @@
 import { LostItem } from "@/feature/lost-item/types/lost-item.type";
 import LostItemBadge from "@/feature/lost-item/components/LostItemBadge";
+import { useRouter } from "next/navigation";
 
 interface Props {
   item: LostItem;
 }
 
 export default function LostItemCard({ item }: Props) {
+
+  const router = useRouter();
+
   return (
-   <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-2xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1">
+   <div onClick={() => router.push(`/lost-item/${item.id}`)} className="overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-2xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1">
       
       <div className="relative h-[180px] w-full overflow-hidden bg-slate-400/20">
         

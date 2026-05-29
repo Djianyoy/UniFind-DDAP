@@ -22,13 +22,7 @@ export default function FormTextarea({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="
-          w-full resize-none rounded-lg border border-white/10
-          bg-white/10 p-3 text-sm text-white
-          outline-none transition-all
-          placeholder:text-white/30
-          focus:border-blue-400
-        "
+        className="w-full resize-none rounded-lg border border-white/10 bg-white/10 p-3 text-sm text-white outline-none transition-all placeholder:text-white/30 focus:border-blue-400"
       />
     </div>
   );

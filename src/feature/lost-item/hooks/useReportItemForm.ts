@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { ReportItemFormData } from "../types/report-item.type";
+import { ReportItemFormData } from "@/feature/lost-item/types/report-item.type";
 
 const initialState: ReportItemFormData = {
   itemName: "",

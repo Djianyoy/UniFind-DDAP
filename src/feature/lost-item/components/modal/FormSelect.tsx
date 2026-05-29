@@ -20,11 +20,7 @@ export default function FormSelect({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="
-          h-11 w-full rounded-lg border border-white/10
-          bg-white/10 px-3 text-sm text-white
-          outline-none
-        "
+        className="h-11 w-full rounded-lg border border-white/10 bg-white/10 px-3 text-sm text-white outline-none"
       >
         <option value="">- Pilih Kategori -</option>
 

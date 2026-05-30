@@ -1,22 +1,21 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
-import DetailBackground from "../components/DetailBackground";
-import DetailBackButton from "../components/DetailBackButton";
-import DetailDescription from "../components/DetailDescription";
-import DetailHero from "../components/DetailHero";
-import DetailInfoCard from "../components/DetailInfoCard";
+import DetailBackground from "@/feature/lost-item/detail/components/DetailBackground";
+import DetailBackButton from "@/feature/lost-item/detail/components/DetailBackButton";
+import DetailDescription from "@/feature/lost-item/detail/components/DetailDescription";
+import DetailHero from "@/feature/lost-item/detail/components/DetailHero";
+import DetailInfoCard from "@/feature/lost-item/detail/components/DetailInfoCard";
 
-import { useItemDetail } from "../hooks/useItemDetail";
+import { useItemDetail } from "@/feature/lost-item/detail/hooks/useItemDetail";
 import { useState } from "react";
-import ClaimModal from "../../claim/components/ClaimModal";
+import ClaimModal from "@/feature/lost-item/claim/components/ClaimModal";
 
 export default function DetailItemSection() {
   const params = useParams();
   const [isClaimOpen, setIsClaimOpen] = useState(false);
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const [refreshKey, setRefreshKey] = useState(0);
 
@@ -62,6 +61,8 @@ export default function DetailItemSection() {
           setRefreshKey((prev) => prev + 1);
 
           setIsClaimOpen(false);
+
+          router.push("/lost-item");
         }}
       />
     </section>

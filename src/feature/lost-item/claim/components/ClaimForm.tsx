@@ -1,7 +1,7 @@
 "use client";
 
-import ClaimUploadBox from "./ClaimUploadBox";
-import { useClaimForm } from "../hooks/useClaimForm";
+import ClaimUploadBox from "@/feature/lost-item/claim/components/ClaimUploadBox";
+import { useClaimForm } from "@/feature/lost-item/claim/hooks/useClaimForm";
 
 interface Props {
   onSubmit: () => void;
@@ -37,14 +37,7 @@ export default function ClaimForm({
             )
           }
           placeholder="Nama sesuai KTM"
-          className="
-            w-full
-            rounded-lg
-            border border-white/20
-            bg-white/10
-            px-3 py-3
-            text-white
-          "
+          className=" w-full rounded-lg border border-white/20 bg-white/10 px-3 py-3 text-white"
         />
       </div>
 
@@ -63,14 +56,7 @@ export default function ClaimForm({
               )
             }
             placeholder="255xxxxxxxx"
-            className="
-              w-full
-              rounded-lg
-              border border-white/20
-              bg-white/10
-              px-3 py-3
-              text-white
-            "
+            className=" w-full rounded-lg border border-white/20 bg-white/10 px-3 py-3 text-white"
           />
         </div>
 
@@ -88,14 +74,7 @@ export default function ClaimForm({
               )
             }
             placeholder="Teknologi Informasi"
-            className="
-              w-full
-              rounded-lg
-              border border-white/20
-              bg-white/10
-              px-3 py-3
-              text-white
-            "
+            className=" w-full rounded-lg border border-white/20 bg-white/10 px-3 py-3 text-white"
           />
         </div>
       </div>
@@ -114,14 +93,7 @@ export default function ClaimForm({
             )
           }
           placeholder="08xxxxxxxxxxx"
-          className="
-            w-full
-            rounded-lg
-            border border-white/20
-            bg-white/10
-            px-3 py-3
-            text-white
-          "
+          className=" w-full rounded-lg border border-white/20 bg-white/10 px-3 py-3 text-white"
         />
       </div>
 
@@ -140,14 +112,7 @@ export default function ClaimForm({
             )
           }
           placeholder="Jelaskan ciri khusus barang..."
-          className="
-            w-full
-            rounded-lg
-            border border-white/20
-            bg-white/10
-            px-3 py-3
-            text-white
-          "
+          className=" w-full rounded-lg border border-white/20 bg-white/10 px-3 py-3 text-white"
         />
       </div>
 
@@ -163,15 +128,7 @@ export default function ClaimForm({
 
       <button
         type="submit"
-        className="
-          w-full
-          rounded-3xl
-          bg-violet-500
-          py-4
-          text-sm
-          font-bold
-          text-white
-        "
+        className=" w-full rounded-3xl bg-violet-500 py-4 text-sm font-bold text-white"
       >
         Kirim laporan
       </button>

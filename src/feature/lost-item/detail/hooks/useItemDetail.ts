@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 
-import { getItemById } from "../../services/local-storage.service";
+import { getItemById } from "@/feature/lost-item/services/local-storage.service";
 
 export function useItemDetail(
   id: string,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ClaimFormData } from "../types/claim-form.type";
+import { ClaimFormData } from "@/feature/lost-item/claim/types/claim-form.type";
 
 export function useClaimForm() {
   const [form, setForm] =

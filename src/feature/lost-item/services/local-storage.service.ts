@@ -28,13 +28,13 @@ export function addItem(item: LostItem) {
   saveItems([item, ...items]);
 }
 
-export function getItemById(id: string) {
-  const items = getItems();
+  export function getItemById(id: string) {
+    const items = getItems();
 
-  return items.find(
-    (item) => item.id === id
-  );
-}
+    return items.find(
+      (item) => item.id === id
+    );
+  }
 
 export function markItemAsFound(
   itemId: string

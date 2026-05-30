@@ -1,8 +1,8 @@
-import DetailActionButton from "./DetailActionButton";
-import DetailInfoRow from "./DetailInfoRow";
+import DetailActionButton from "@/feature/lost-item/detail/components/DetailActionButton";
+import DetailInfoRow from "@/feature/lost-item/detail/components/DetailInfoRow";
 
-import { LostItem } from "../types/item-detail.type";
-import { mapDetailFields } from "../utils/detail-mapper";
+import { LostItem } from "@/feature/lost-item/detail/types/item-detail.type";
+import { mapDetailFields } from "@/feature/lost-item/detail/utils/detail-mapper";
 
 interface Props {
   item: LostItem;

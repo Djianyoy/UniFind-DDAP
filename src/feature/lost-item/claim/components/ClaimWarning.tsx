@@ -1,12 +1,7 @@
 export default function ClaimWarning() {
   return (
     <div
-      className="
-        rounded-md
-        bg-slate-800
-        px-4
-        py-3
-      "
+      className=" rounded-md bg-slate-800 px-4 py-3"
     >
       <p className="text-xs text-gray-400">
         Sebelum mengklaim, pastikan kamu

@@ -23,30 +23,13 @@ export default function ClaimUploadBox({
   return (
     <div>
       <label
-        className="
-          mb-2 block
-          text-xs
-          font-semibold
-          text-white/80
-        "
+        className=" mb-2 block text-xs font-semibold text-white/80"
       >
         Foto Bukti (opsional)
       </label>
 
       <label
-        className="
-          flex
-          min-h-[160px]
-          cursor-pointer
-          flex-col
-          items-center
-          justify-center
-          rounded-lg
-          border
-          border-white/20
-          bg-white/10
-          p-6
-        "
+        className=" flex min-h-[160px] cursor-pointer flex-col items-center justify-center rounded-lg border border-white/20 bg-white/10 p-6"
       >
         <input
           type="file"
@@ -64,11 +47,7 @@ export default function ClaimUploadBox({
           <img
             src={previewUrl}
             alt="Preview"
-            className="
-              max-h-[200px]
-              rounded-lg
-              object-cover
-            "
+            className=" max-h-[200px] rounded-lg object-cover"
           />
         ) : (
           <>
@@ -78,23 +57,13 @@ export default function ClaimUploadBox({
             />
 
             <p
-              className="
-                mt-4
-                text-center
-                text-base
-                font-semibold
-                text-white/80
-              "
+              className=" mt-4 text-center text-base font-semibold text-white/80"
             >
               Klik atau seret foto ke sini
             </p>
 
             <p
-              className="
-                mt-1
-                text-xs
-                text-white/30
-              "
+              className=" mt-1 text-xs text-white/30"
             >
               JPG, PNG, WEBP • Maks. 5MB
             </p>

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { DUMMY_LOST_ITEMS } from "../data/dummy-lost-item";
-import { LostItem } from "../types/lost-item.type";
+import { DUMMY_LOST_ITEMS } from "@/feature/lost-item/data/dummy-lost-item";
+import { LostItem } from "@/feature/lost-item/types/lost-item.type";
 
 const STORAGE_KEY = "lost-items";
 
@@ -35,8 +35,15 @@ export function useLostItemStorage() {
   }, [items]);
 
   function addItem(item: LostItem) {
-    setItems((prev) => [item, ...prev]);
-  }
+  const updatedItems = [item, ...items];
+
+  setItems(updatedItems);
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(updatedItems)
+  );
+}
 
   return {
     items,

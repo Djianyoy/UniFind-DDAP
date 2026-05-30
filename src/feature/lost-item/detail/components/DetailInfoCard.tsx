@@ -1,27 +1,21 @@
 import DetailActionButton from "./DetailActionButton";
 import DetailInfoRow from "./DetailInfoRow";
 
-
 import { LostItem } from "../types/item-detail.type";
 import { mapDetailFields } from "../utils/detail-mapper";
 
 interface Props {
   item: LostItem;
+  onClaimClick: () => void;
 }
 
-export default function DetailInfoCard({
-  item,
-}: Props) {
+export default function DetailInfoCard({ item, onClaimClick }: Props) {
   const fields = mapDetailFields(item);
 
   return (
-    <div
-      className="rounded-3xl border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:p-7"
-    >
+    <div className="rounded-3xl border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur-md sm:p-6 lg:p-7">
       <div>
-        <h1
-          className="text-2xl font-bold text-white sm:text-3xl"
-        >
+        <h1 className="text-2xl font-bold text-white sm:text-3xl">
           {item.title}
         </h1>
 
@@ -41,7 +35,7 @@ export default function DetailInfoCard({
       </div>
 
       <div className="mt-8">
-        <DetailActionButton item={item} />
+        <DetailActionButton item={item} onClaimClick={onClaimClick} />{" "}
       </div>
     </div>
   );

@@ -35,3 +35,25 @@ export function getItemById(id: string) {
     (item) => item.id === id
   );
 }
+
+export function markItemAsFound(
+  itemId: string
+) {
+  const items = getItems();
+
+  const updatedItems = items.map((item) =>
+    item.id === itemId
+      ? {
+          ...item,
+          status: "found",
+        }
+      : item
+  );
+
+  localStorage.setItem(
+    "lost-items",
+    JSON.stringify(updatedItems)
+  );
+
+  return updatedItems;
+}

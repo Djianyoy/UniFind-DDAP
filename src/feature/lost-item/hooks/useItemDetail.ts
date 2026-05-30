@@ -2,13 +2,13 @@
 
 import { useMemo } from "react";
 
-import { getItemById } from "../../services/local-storage.service";
+import { getItemById } from "@/feature/lost-item/services/local-storage.service";
 
-import { LostItem } from "../types/item-detail.type";
+import { LostItem } from "@/feature/lost-item/detail/types/item-detail.type";
 
 export function useItemDetail(
   id: string,
-  refreshKey: number
+  refreshKey = 0
 ): LostItem | null {
   return useMemo(() => {
     return getItemById(id) ?? null;

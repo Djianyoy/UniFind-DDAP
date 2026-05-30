@@ -35,3 +35,23 @@ export function getItemById(id: string) {
     (item) => item.id === id
   );
 }
+
+export function claimLostItem(id: string) {
+  const items = getItems();
+
+  const updatedItems = items.map((item) =>
+    item.id === id
+      ? {
+          ...item,
+          status: "found",
+        }
+      : item
+  );
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(updatedItems)
+  );
+
+  return updatedItems;
+}

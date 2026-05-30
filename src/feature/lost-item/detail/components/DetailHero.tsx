@@ -1,10 +1,10 @@
 import Image from "next/image";
 
-import DetailBadge from "./DetailBadge";
+import DetailBadge from "@/feature/lost-item/detail/components/DetailBadge";
 
-import { getImageSrc } from "../utils/get-image-src";
+import { getImageSrc } from "@/feature/lost-item/detail/utils/get-image-src";
 
-import { LostItem } from "../types/item-detail.type";
+import { LostItem } from "@/feature/lost-item/detail/types/item-detail.type";
 
 interface Props {
   item: LostItem;

@@ -1,6 +1,6 @@
 import { ItemStatus } from "@/feature/lost-item/detail/types/item-detail.type";
 
-import { DETAIL_STATUS_CONFIG } from "../constants/detail-status.constants";
+import { DETAIL_STATUS_CONFIG } from "@/feature/lost-item/detail/constants/detail-status.constants";
 
 interface Props {
   status: ItemStatus;

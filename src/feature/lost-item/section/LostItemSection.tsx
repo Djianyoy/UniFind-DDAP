@@ -43,10 +43,9 @@ export default function LostItemSection() {
       className="
         relative min-h-screen overflow-hidden
         bg-[#1C2C58]
-        px-5 py-10
+        px-5 py-24
         sm:px-8
         lg:px-14
-        xl:px-20
       "
     >
       <img

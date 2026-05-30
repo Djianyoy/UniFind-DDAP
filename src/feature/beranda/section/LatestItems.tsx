@@ -8,8 +8,22 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { useRouter } from 'next/navigation';
+import { isAuthenticated } from '@/lib/auth/proxy';
+import { useToast } from '@/shared/context/ToastContext';
+
 const LatestItems = () => {
+  const router = useRouter();
+  const { showToast } = useToast();
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMoreClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated()) {
+      e.preventDefault();
+      showToast('Silakan login terlebih dahulu untuk melihat lebih banyak.', 'warning');
+      router.push('/login');
+    }
+  };
   const items = [
     { title: "Dompet", location: "Gedung GKM", date: "26 Maret 2026", category: "Hilang", categoryColor: "bg-red-500/20 text-red-300" },
     { title: "Kunci Motor Yamaha", location: "Gedung F Filkom", date: "20 Maret 2026", category: "Ditemukan", categoryColor: "bg-green-500/20 text-green-300" },
@@ -48,7 +62,7 @@ const LatestItems = () => {
 
       <div className="flex items-center gap-4 text-muted">
          <div className="flex-1 h-[1px] bg-white/10"></div>
-         <Link href="/lost-item" className="text-sm font-medium hover:text-white transition-colors flex items-center gap-2">
+         <Link href="/lost-item" onClick={handleMoreClick} className="text-sm font-medium hover:text-white transition-colors flex items-center gap-2">
             Temukan lebih banyak 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
          </Link>

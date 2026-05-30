@@ -2,12 +2,39 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useLayoutEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import ReportItemModal from '@/feature/lost-item/components/modal/ReportItemModal';
+import { useLostItemStorage } from '@/feature/lost-item/hooks/useLostItemStorage';
+import { isAuthenticated } from '@/lib/auth/proxy';
+import { useToast } from '@/shared/context/ToastContext';
 
 const Hero = () => {
+  const router = useRouter();
+  const { showToast } = useToast();
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const [openModal, setOpenModal] = useState(false)
+  const { addItem } = useLostItemStorage();
+
+  const handleLaporClick = () => {
+    if (isAuthenticated()) {
+      setOpenModal(true);
+    } else {
+      showToast('Silakan login terlebih dahulu untuk melapor barang.', 'warning');
+      router.push('/login');
+    }
+  };
+
+  const handleCariClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated()) {
+      e.preventDefault();
+      showToast('Silakan login terlebih dahulu untuk mengakses daftar barang.', 'warning');
+      router.push('/login');
+    }
+  };
+  
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -45,16 +72,16 @@ const Hero = () => {
             Laporan barang hilang & temuan kampus yang terpusat, cepat, dan mudah diakses
           </p>
           <div className="flex flex-wrap gap-8 pt-4">
-            <Link href={"/lost-item"}>
+            <Link href={"/lost-item"} onClick={handleCariClick}>
               <button className="bg-primary px-8 py-2 rounded-2xl font-bold text-lg hover:opacity-70 transition-all flex items-center shadow-2xl cursor-pointer">
                 Cari Barang
               </button>
             </Link>
-            <Link href={"/lapor"}>
-              <button className="bg-white px-8 py-2 rounded-2xl font-bold text-lg hover:bg-white/60 transition-all text-primary shadow-2xl cursor-pointer">
-                Lapor Barang
-              </button>
-            </Link>
+            <button 
+              onClick={handleLaporClick} 
+              className="bg-white px-8 py-2 rounded-2xl font-bold text-lg hover:bg-white/60 transition-all text-primary shadow-2xl cursor-pointer">
+              Lapor Barang
+            </button>
           </div>
         </div>
 
@@ -64,6 +91,12 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <ReportItemModal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        onSubmit={addItem}
+      />
     </section>
   );
 };

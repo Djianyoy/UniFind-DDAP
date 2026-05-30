@@ -14,7 +14,7 @@ export default function ReportItemModal({ open, onClose, onSubmit }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm "
     >
       <div
         className="max-h-[95vh] w-full max-w-2xl overflow-y-auto rounded-3xl bg-[#1F2B6C] p-5 sm:p-8"

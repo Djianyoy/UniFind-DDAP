@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
+import { useState, useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 import { markItemAsFound } from "@/feature/lost-item/services/local-storage.service";
 
 interface Props {
@@ -22,6 +22,27 @@ export default function ClaimModal({
 
   const [imagePreview, setImagePreview] =
     useState<string | null>(null);
+
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (isOpen && overlayRef.current && modalRef.current) {
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          overlayRef.current,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.3, ease: "power2.out" }
+        );
+        gsap.fromTo(
+          modalRef.current,
+          { scale: 0.9, opacity: 0, y: 20 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.1)", delay: 0.1 }
+        );
+      });
+      return () => ctx.revert();
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -45,9 +66,14 @@ export default function ClaimModal({
 
   return (
     <div
-      className=" fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+      ref={overlayRef}
+      className=" fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 backdrop-blur-sm"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
     >
       <div
+        ref={modalRef}
         className=" max-h-[90vh] w-full max-w-[473px] overflow-y-auto rounded-3xl bg-[#1B2559] p-10"
       >
         <h2

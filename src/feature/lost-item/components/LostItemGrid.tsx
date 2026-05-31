@@ -10,7 +10,9 @@ export default function LostItemGrid({ items }: Props) {
       className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
     >
       {items.map((item) => (
-        <LostItemCard key={item.id} item={item} />
+        <div key={item.id} className="lost-item-card">
+          <LostItemCard item={item} />
+        </div>
       ))}
     </div>
   );

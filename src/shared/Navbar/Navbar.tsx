@@ -68,7 +68,7 @@ const Navbar = () => {
                             </button>
                             <button 
                                 onClick={handleLogout}
-                                className="bg-white border border-red-600 text-red-600 text-sm font-semibold px-4 py-2 rounded-xl hover:bg-red-600 hover:text-white transition-colors cursor-pointer"
+                                className="bg-red-600 border border-red-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-white hover:text-red-600 transition-colors cursor-pointer"
                             >
                                 Log Out
                             </button>
@@ -98,7 +98,7 @@ const Navbar = () => {
 
                 {/* Mobile Dropdown Menu */}
                 {isMenuOpen && (
-                    <div className="absolute top-full left-0 right-0 glass-card mx-6 mt-2 p-6 flex flex-col gap-6 md:hidden animate-slide-in">
+                    <div className="absolute top-full left-0 right-0 bg-primary rounded-2xl mx-6 mt-2 p-6 flex flex-col gap-6 md:hidden animate-slide-in">
                         <Link 
                             href="/lost-item" 
                             className="text-lg font-medium hover:text-primary transition-colors"
@@ -117,12 +117,12 @@ const Navbar = () => {
 
                         {userName ? (
                             <div className="flex flex-col gap-4">
-                                <div className="bg-white/10 p-4 rounded-xl text-center">
+                                <div className="bg-white p-4 rounded-xl text-center">
                                     <span className="font-semibold text-primary">Hi, {userName}</span>
                                 </div>
                                 <button 
                                     onClick={handleLogout}
-                                    className="w-full bg-red-600/10 border border-red-600 text-red-600 py-3 rounded-xl font-bold hover:bg-red-600 hover:text-white transition-all cursor-pointer"
+                                    className="w-full bg-red-600 border border-red-600 text-white py-3 rounded-xl font-bold hover:bg-white hover:text-red-600 transition-all cursor-pointer"
                                 >
                                     Logout
                                 </button>

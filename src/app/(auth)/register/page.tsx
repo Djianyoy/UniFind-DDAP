@@ -1,8 +1,11 @@
+import RegisterContainer from '@/feature/(auth)/register/RegisterContainer'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <section>
+      <RegisterContainer/>
+    </section>
   )
 }
 

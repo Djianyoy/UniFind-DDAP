@@ -1,5 +1,5 @@
 import {redirect} from "next/navigation";
 
-export default function Landing() {
-  redirect("/landing");
+export default function Beranda() {
+  redirect("/beranda");
 }

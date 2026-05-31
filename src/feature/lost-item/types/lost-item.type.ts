@@ -9,4 +9,5 @@ export interface LostItem {
   category: string;
   image: string;
   status: LostItemStatus;
+  
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "../styles/globals.css"
 import { inter } from "@/lib/font";
+import Background from "@/layout/Background";
+import { ToastProvider } from "@/shared/context/ToastContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +19,12 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full relative overflow-x-hidden">
+        <ToastProvider>
+          <Background/>
+          {children}
+        </ToastProvider>
+      </body>
     </html>
   );
 }

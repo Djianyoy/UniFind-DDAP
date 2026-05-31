@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useLayoutEffect, useRef } from 'react';
-import ItemCard from '../component/ItemCard';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,11 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 import { useRouter } from 'next/navigation';
 import { isAuthenticated } from '@/lib/auth/proxy';
 import { useToast } from '@/shared/context/ToastContext';
+import { useLostItemStorage } from '@/feature/lost-item/hooks/useLostItemStorage';
+import LostItemCard from '@/feature/lost-item/components/LostItemCard';
 
 const LatestItems = () => {
   const router = useRouter();
   const { showToast } = useToast();
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { items } = useLostItemStorage();
 
   const handleMoreClick = (e: React.MouseEvent) => {
     if (!isAuthenticated()) {
@@ -24,11 +27,9 @@ const LatestItems = () => {
       router.push('/login');
     }
   };
-  const items = [
-    { title: "Dompet", location: "Gedung GKM", date: "26 Maret 2026", category: "Hilang", categoryColor: "bg-red-500/20 text-red-300" },
-    { title: "Kunci Motor Yamaha", location: "Gedung F Filkom", date: "20 Maret 2026", category: "Ditemukan", categoryColor: "bg-green-500/20 text-green-300" },
-    { title: "Hp Iphone 20 Pro Max 2TB", location: "Gedung F Filkom", date: "18 Februari 2026", category: "Dicari", categoryColor: "bg-yellow-500/20 text-yellow-300" },
-  ];
+
+  // Get the 3 newest items
+  const latestThreeItems = items.slice(0, 3);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -53,9 +54,9 @@ const LatestItems = () => {
       <h2 className="text-4xl font-bold text-center">Barang Temuan Terbaru</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {items.map((item, idx) => (
-          <div key={idx} className="latest-item-card">
-            <ItemCard {...item} />
+        {latestThreeItems.map((item) => (
+          <div key={item.id} className="latest-item-card">
+            <LostItemCard item={item} />
           </div>
         ))}
       </div>
